@@ -21,6 +21,7 @@ homebrew_installed_packages:
   # - ansible # Installed via Pip.
   - ack
   - autoconf
+  - awscli
   - bash-completion
   - ccache
   - coreutils
