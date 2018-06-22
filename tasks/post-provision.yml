@@ -22,3 +22,14 @@
 #    name: SinglePlatform
 #    token: '{{ github_access_token }}'
 #    pubkey: '{{ ssh_pub_key.stdout }}'
+#
+- name: Ensure vagrant hostmanager plugin is installed
+  shell: vagrant plugin install vagrant-hostmanager
+
+- name: Ensure singleplatform repositories are cloned locally.
+  git:
+    repo: "sp:{{ item }}"
+    dest: "{{ sp_git_repos_local_directory }}/{{ item }}"
+    recursive: yes
+  become: no
+  with_items: "{{ sp_git_repos }}"

@@ -16,6 +16,16 @@ dotfiles_files:
   - .SpaceVim.d/init.vim
   - .osx
 
+sp_git_repos_local_directory: ~/envs
+sp_git_repos:
+  - ansible
+  - spdj
+  - spbilling
+  - paywall
+  - spfb
+  - spv2
+  - single-api
+
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
 mas_email: ""
