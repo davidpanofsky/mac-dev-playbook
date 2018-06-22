@@ -1,0 +1,24 @@
+---
+# Configure GIT
+- name: Set git user name
+  git_config:
+    name: user.name
+    scope: global
+    value: '{{ ansible_user_gecos }}'
+
+- name: Set git email address
+  git_config:
+    name: user.email
+    scope: global
+    value: '{{ user_email }}'
+
+#- name: Read SSH public key to authorize
+#  shell: cat ~/.ssh/id_rsa.pub
+#  register: ssh_pub_key
+#
+#- name: Authorize key with GitHub
+#  local_action:
+#    module: github_key
+#    name: SinglePlatform
+#    token: '{{ github_access_token }}'
+#    pubkey: '{{ ssh_pub_key.stdout }}'

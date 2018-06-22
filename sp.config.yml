@@ -1,0 +1,97 @@
+---
+downloads: ~/.ansible-downloads/
+
+configure_dotfiles: yes
+configure_sudoers: yes
+configure_terminal: yes
+configure_osx: yes
+
+dotfiles_repo: https://github.com/davidpanofsky/dotfiles.git
+dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_local_destination: ~/.dotfiles
+dotfiles_files:
+  - .bash_profile
+  - .gitconfig
+  - .gitignore
+  - .SpaceVim.d/init.vim
+  - .osx
+
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_installed_apps: []
+mas_email: ""
+mas_password: ""
+
+homebrew_upgrade_all_packages: True
+homebrew_installed_packages:
+  - autoconf
+  - awscli
+  - bash-completion
+  - coreutils
+  - gettext
+  - git
+  - git-secrets
+  - gpg
+  - openssl
+  - pwgen
+  - pyenv
+  - pyenv-ccache
+  - pyenv-pip-migrate
+  - pyenv-virtualenv
+  - readline
+  - sqlite
+  - tmux
+  - tmux-cssh
+  - vagrant-completion
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - aws-vault
+  - font-dejavusansmono-nerd-font
+  - font-droidsansmono-nerd-font
+  - font-hack-nerd-font
+  - github
+  - hipchat
+  - iterm2
+  - mysql-client
+  - mysql-connector-python
+  - postman
+  - utc-menu-clock
+  - vagrant
+  - virtualbox
+
+osx_script: "~/.osx --no-restart"
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+composer_packages: []
+  # - name: drush
+  #   state: present # present/absent, default: present
+  #   version: "^8.1" # default: N/A
+gem_packages: []
+  # - name: bundler
+  #   state: present # present/absent/latest, default: present
+  #   version: "~> 1.15.1" # default: N/A
+npm_packages: []
+  # - name: webpack
+  #   state: present # present/absent/latest, default: present
+  #   version: "^2.6" # default: N/A
+pip_packages:
+  - state: latest
+    name:
+    - pip
+    - wheel
+    - setuptools
+    - virtualenv
+  
+  # - name: mkdocs
+  #   state: present # present/absent/latest, default: present
+  #   version: "0.16.3" # default: N/A
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks:
+  - tasks/post-provision.yml
