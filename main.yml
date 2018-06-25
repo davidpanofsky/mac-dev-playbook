@@ -3,13 +3,18 @@
   connection: local
 
   vars_files:
+    - config.yml
     - sp.config.yml
 
-  pre_tasks:
-    - include_vars: "{{ item }}"
-      with_fileglob:
-        - ../config.yml
-      tags: ['always']
+  vars_prompt:
+    - name: "user_name"
+      prompt: "Enter your full name"
+      private: no
+      default: "{{ user_name | default() }}"
+    - name: "user_email"
+      prompt: "Enter your email address"
+      private: no
+      default: "{{ user_email | default() }}"
 
   roles:
     - role: geerlingguy.homebrew
@@ -42,3 +47,4 @@
       loop_control:
         loop_var: outer_item
       with_fileglob: "{{ post_provision_tasks|default(omit) }}"
+      tags: ['post-provision']

@@ -29,7 +29,18 @@
 - name: Ensure singleplatform repositories are cloned locally.
   git:
     repo: "sp:{{ item }}"
+    dest: "{{ sp_git_repos_local_directory }}/.{{ item }}"
+    recursive: yes
+    bare: yes
+  become: no
+  with_items: "{{ sp_git_repos }}"
+
+- name: Ensure singleplatform repositories are available locally.
+  git:
+    repo: "sp:{{ item }}"
     dest: "{{ sp_git_repos_local_directory }}/{{ item }}"
     recursive: yes
+    reference: "{{ sp_git_repos_local_directory }}/.{{ item }}"
+    bare: no
   become: no
   with_items: "{{ sp_git_repos }}"

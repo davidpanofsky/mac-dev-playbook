@@ -6,7 +6,7 @@ configure_sudoers: yes
 configure_terminal: yes
 configure_osx: yes
 
-dotfiles_repo: https://github.com/davidpanofsky/dotfiles.git
+dotfiles_repo: ssh://git@github.com:davidpanofsky/dotfiles.git
 dotfiles_repo_accept_hostkey: yes
 dotfiles_repo_local_destination: ~/.dotfiles
 dotfiles_files:
@@ -26,13 +26,10 @@ sp_git_repos:
   - spv2
   - single-api
 
-# See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: []
-mas_email: ""
-mas_password: ""
+mas_installed_sp_apps: []
 
 homebrew_upgrade_all_packages: True
-homebrew_installed_packages:
+homebrew_sp_packages:
   - autoconf
   - awscli
   - bash-completion
@@ -58,7 +55,7 @@ homebrew_taps:
   - homebrew/cask
 
 homebrew_cask_appdir: /Applications
-homebrew_cask_apps:
+homebrew_cask_sp_apps:
   - aws-vault
   - font-dejavusansmono-nerd-font
   - font-droidsansmono-nerd-font
@@ -78,29 +75,37 @@ osx_script: "~/.osx --no-restart"
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
 # installed, eg. through homebrew.
-composer_packages: []
+composer_sp_packages: []
   # - name: drush
   #   state: present # present/absent, default: present
   #   version: "^8.1" # default: N/A
-gem_packages: []
+gem_sp_packages: []
   # - name: bundler
   #   state: present # present/absent/latest, default: present
   #   version: "~> 1.15.1" # default: N/A
-npm_packages: []
+npm_sp_packages: []
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-pip_packages:
+pip_sp_packages:
+  # - name: mkdocs
+  #   state: present # present/absent/latest, default: present
+  #   version: "0.16.3" # default: N/A
   - state: latest
     name:
     - pip
     - wheel
     - setuptools
     - virtualenv
-  
-  # - name: mkdocs
-  #   state: present # present/absent/latest, default: present
-  #   version: "0.16.3" # default: N/A
+
+mas_installed_apps: "{{ mas_installed_sp_apps + mas_additional_installed_apps }}"
+homebrew_cask_apps: "{{ homebrew_cask_sp_apps + homebrew_cask_additional_apps }}"
+homebrew_installed_packages: "{{ homebrew_sp_packages + homebrew_additional_packages }}"
+
+composer_packages: "{{ composer_sp_packages + composer_additional_packages }}"
+gem_packages: "{{ gem_sp_packages + gem_additional_packages }}"
+npm_packages: "{{ npm_sp_packages + npm_additional_packages }}"
+pip_packages: "{{ pip_sp_packages + pip_additional_packages }}"
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks:
