@@ -1,0 +1,53 @@
+---
+# Your Full Name
+user_name: "David Panofsky"
+# Your email address
+user_email: "dpanofsky@singleplatform.com"
+
+downloads: ~/.ansible-downloads/
+
+configure_dotfiles: yes
+configure_sudoers: yes
+configure_terminal: yes
+configure_osx: yes
+
+dotfiles_repo: https://github.com/davidpanofsky/dotfiles.git
+dotfiles_files:
+  - .bash_profile
+  - .gitconfig
+  - .gitignore
+  - .SpaceVim.d/init.vim
+  - .osx
+
+homebrew_additional_packages: []
+homebrew_cask_additional_apps: []
+
+mas_additional_installed_apps: []
+mas_email: "apple@rudybear.com"
+mas_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          30623162353064376432386533646261316162623336373166626436653331633039343537383631
+          3332666236643734333936383131306565366266333438310a653964393231303261643036376437
+          30326238363435306665343866333066383163653063383865636464393962316433383038333831
+          6633636161343436390a363334626639356364306666383336303931666263306235373734616335
+          35373138313237353437646336366538633864333761366337613538303136633236
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+composer_additional_packages: []
+  # - name: drush
+  #   state: present # present/absent, default: present
+  #   version: "^8.1" # default: N/A
+gem_additional_packages: []
+  # - name: bundler
+  #   state: present # present/absent/latest, default: present
+  #   version: "~> 1.15.1" # default: N/A
+npm_additional_packages: []
+  # - name: webpack
+  #   state: present # present/absent/latest, default: present
+  #   version: "^2.6" # default: N/A
+pip_additional_packages: []
+  # - name: mkdocs
+  #   state: present # present/absent/latest, default: present
+  #   version: "0.16.3" # default: N/A
