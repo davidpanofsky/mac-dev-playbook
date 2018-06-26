@@ -28,6 +28,12 @@
 - name: Ensure vagrant hostmanager plugin is installed
   shell: vagrant plugin install vagrant-hostmanager
 
+- name: Ensure pyenv has correct python version installed
+  shell: pyenv install -s "{{ default_python_version }}"
+
+- name: Configure pyenv to use correct python version
+  shell: pyenv global "{{ default_python_version }}"
+
 - name: Ensure singleplatform repositories are cloned locally.
   git:
     repo: "sp:{{ item }}"
@@ -46,3 +52,19 @@
     bare: no
   become: no
   with_items: "{{ sp_git_repos }}"
+
+- name: Create pyenv virtualenv for ansible
+  shell: pyenv virtualenv "{{ default_python_version }}" ansible
+
+- name: Lookup pyenv root
+  shell: pyenv root
+  register: pyenv_root
+
+- name: Install requirements into ansible virtualenv
+  shell: "{{ pyenv_root.stdout }}/versions/ansible/bin/pip install -r {{ sp_git_repos_local_directory }}/ansible/requirements.txt"
+
+- name: Configure pyenv local for ansible
+  copy:
+    content: "ansible"
+    dest: "{{ sp_git_repos_local_directory }}/ansible/.python-version"
+    mode: 0644
