@@ -9,7 +9,7 @@ user_email: ""
 ### End Required Configuration ###
 
 # General configuration options
-configure_dotfiles: no
+configure_dotfiles: yes
 configure_git: yes
 configure_sudoers: yes
 configure_terminal: yes

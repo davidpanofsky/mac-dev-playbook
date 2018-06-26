@@ -10,7 +10,7 @@
     - role: geerlingguy.homebrew
       tags: ['homebrew']
     - role: geerlingguy.dotfiles
-      when: configure_dotfiles
+      when: (configure_dotfiles and dotfiles_repo != "")
       tags: ['dotfiles']
     - role: geerlingguy.mas
       when: mas_installed_apps
@@ -18,6 +18,10 @@
 
   tasks:
     - include_tasks: tasks/ansible-setup.yml
+
+    - include_tasks: tasks/default-dotfiles.yml
+      when: (configure_dotfiles and dotfiles_repo == "")
+      tags: ['dotfiles']
 
     - include_tasks: tasks/system-gitconfig.yml
       when: configure_git
