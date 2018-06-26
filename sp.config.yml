@@ -1,22 +1,6 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: yes
-configure_git: yes
-configure_sudoers: yes
-configure_terminal: yes
-configure_osx: yes
-
-dotfiles_repo: ssh://git@github.com:davidpanofsky/dotfiles.git
-dotfiles_repo_accept_hostkey: yes
-dotfiles_repo_local_destination: ~/.dotfiles
-dotfiles_files:
-  - .bash_profile
-  - .gitconfig
-  - .gitignore
-  - .SpaceVim.d/init.vim
-  - .osx
-
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks:
   - tasks/post-provision.yml

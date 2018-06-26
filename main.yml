@@ -6,16 +6,6 @@
     - config.yml
     - sp.config.yml
 
-  vars_prompt:
-    - name: "user_name"
-      prompt: "Enter your full name"
-      private: no
-      default: "{{ user_name | default() }}"
-    - name: "user_email"
-      prompt: "Enter your email address"
-      private: no
-      default: "{{ user_email | default() }}"
-
   roles:
     - role: geerlingguy.homebrew
       tags: ['homebrew']
