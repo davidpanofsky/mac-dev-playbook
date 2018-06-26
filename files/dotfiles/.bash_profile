@@ -6,7 +6,7 @@ export HISTSIZE=10000
 export HISTIGNORE=ignorespace:erasedups
 export HISTTIMEFORMAT="%Y%m%d %T  "
 
-export VAGRANT_CWD="${HOME}/.vagrant"
+export VAGRANT_DOTFILE_PATH="${HOME}/.vagrant"
 
 export PATH="/usr/local/bin:/usr/local/opt/mysql-client/bin:$PATH"
 

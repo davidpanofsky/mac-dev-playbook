@@ -1,0 +1,9 @@
+---
+# Copy default dotfiles into place
+- name: Copy default SP dotfiles
+  copy:
+    src: files/dotfiles/
+    dest: "~"
+    force: no
+    mode: 0755
+  tags: dotfiles

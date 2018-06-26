@@ -13,7 +13,7 @@ configure_dotfiles: yes
 configure_git: yes
 configure_sudoers: yes
 configure_terminal: yes
-configure_osx: yes
+configure_osx: no
 
 downloads: ~/.ansible-downloads/
 
