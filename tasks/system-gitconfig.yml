@@ -1,0 +1,18 @@
+---
+# Configure GIT
+- name: Set git default config
+  copy:
+    src: files/gitconfig
+    dest: /usr/local/etc/gitconfig
+    mode: 0644
+  tags: git
+
+- name: Set runtime-dependant git config overrides
+  git_config:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    scope: system
+  tags: git
+  with_items:
+    - { name: "core.excludesfile", value: "{{ ansible_user_dir }}/.gitignore_global" }
+    - { name: "gpg.program", value: "/usr/local/bin/gpg" }

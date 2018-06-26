@@ -29,6 +29,10 @@
   tasks:
     - include_tasks: tasks/ansible-setup.yml
 
+    - include_tasks: tasks/system-gitconfig.yml
+      when: configure_git
+      tags: ['git']
+
     - include_tasks: tasks/sudoers.yml
       when: configure_sudoers
 
@@ -47,4 +51,4 @@
       loop_control:
         loop_var: outer_item
       with_fileglob: "{{ post_provision_tasks|default(omit) }}"
-      tags: ['post-provision']
+      tags: ['git','post-provision']

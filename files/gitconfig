@@ -1,0 +1,82 @@
+[alias]
+	added = difftool --cached
+	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+	amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+	ba = branch -a
+	br = branch
+	churn = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count,file"} {print $1 "," $2}'
+	ci = commit
+	co = checkout
+	conflicts = diff --name-only --diff-filter=U
+	diff-fetch = diff ..FETCH_HEAD
+	export = archive -o latest.tar.gz -9 --prefix=latest/
+	fixconflicts = grep -Ovi --recurse-submodules '^<<<<<<<'
+	gd = git diff | mate
+	gf = git fetch
+	gl = git pull
+	gp = git push
+	ld = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+	lg = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative
+	lgg = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative --name-only
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+	p = pull --rebase --ff-only
+	pretty = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	rec = add --patch
+	revert-file = checkout HEAD --
+	revert-file-server = checkout FETCH_HEAD --
+	showtool = "!f() { git difftool $1^ $1; }; f"
+	st = status
+	uncommit = reset --soft HEAD^
+	unstage = reset HEAD
+	upsub = "!f() { git pull && git submodule update --init --recursive; }; f"
+
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = true
+
+[commit]
+	gpgsign = false
+
+[core]
+	excludesfile = /Users/dpanofsky/.gitignore_global
+	whitespace = warn
+
+[credential]
+	helper = osxkeychain
+
+[diff "ansible-vault"]
+	cachetextconv = true
+	textconv = ansible-vault view
+
+[diff]
+	ignoresubmodules = dirty
+
+[difftool]
+	prompt = false
+
+[gpg]
+
+[merge]
+	tool = vimdiff
+
+[pager]
+	difftool = true
+
+[push]
+	default = simple
+
+[rerere]
+	enabled = true
+
+[submodule]
+	fetchjobs = 0
+
+[url "ssh://git@github.com/"]
+	insteadof = gh:
+
+[url "ssh://git@github.com/singleplatform/"]
+	insteadof = sp:

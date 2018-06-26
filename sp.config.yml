@@ -2,6 +2,7 @@
 downloads: ~/.ansible-downloads/
 
 configure_dotfiles: yes
+configure_git: yes
 configure_sudoers: yes
 configure_terminal: yes
 configure_osx: yes
@@ -15,6 +16,10 @@ dotfiles_files:
   - .gitignore
   - .SpaceVim.d/init.vim
   - .osx
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks:
+  - tasks/post-provision.yml
 
 sp_git_repos_local_directory: ~/envs
 sp_git_repos:
@@ -107,6 +112,3 @@ gem_packages: "{{ gem_sp_packages + gem_additional_packages }}"
 npm_packages: "{{ npm_sp_packages + npm_additional_packages }}"
 pip_packages: "{{ pip_sp_packages + pip_additional_packages }}"
 
-# Glob pattern to ansible task files to run after all other tasks are finished.
-post_provision_tasks:
-  - tasks/post-provision.yml
