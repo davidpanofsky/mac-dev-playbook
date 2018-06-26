@@ -7,7 +7,7 @@
     mode: 0644
   tags: git
 
-- name: Set runtime-dependant git config overrides
+- name: Set runtime-dependent git config overrides
   git_config:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
