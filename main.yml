@@ -6,6 +6,10 @@
     - config.yml
     - sp.config.yml
 
+  pre_tasks:
+    - name: Ensure xcode installed
+      shell: xcode-select --install
+
   roles:
     - role: geerlingguy.homebrew
       tags: homebrew
