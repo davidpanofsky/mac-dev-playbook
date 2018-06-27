@@ -107,6 +107,7 @@
     state: present
     install_options: "appdir={{ homebrew_cask_appdir }}"
   with_items: "{{ homebrew_cask_apps }}"
+  ignore_errors: yes
 
 - name: Ensure blacklisted cask applications are not installed.
   homebrew_cask: "name={{ item }} state=absent"
