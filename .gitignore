@@ -1,5 +1,9 @@
 *.vagrant
 .DS_Store
 *.retry
-roles*
-config.yml
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
