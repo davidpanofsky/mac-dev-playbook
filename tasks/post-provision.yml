@@ -5,14 +5,14 @@
     name: user.name
     scope: global
     value: '{{ ansible_user_gecos }}'
-  tags: git
+  tags: ['git','post-provision']
 
 - name: Set git email address
   git_config:
     name: user.email
     scope: global
     value: '{{ user_email }}'
-  tags: git
+  tags: ['git','post-provision']
 
 #- name: Read SSH public key to authorize
 #  shell: cat ~/.ssh/id_rsa.pub
@@ -27,12 +27,15 @@
 #
 - name: Ensure vagrant hostmanager plugin is installed
   shell: vagrant plugin install vagrant-hostmanager
+  tags: ['post-provision']
 
 - name: Ensure pyenv has correct python version installed
   shell: pyenv install -s "{{ default_python_version }}"
+  tags: ['post-provision']
 
 - name: Configure pyenv to use correct python version
   shell: pyenv global "{{ default_python_version }}"
+  tags: ['post-provision']
 
 - name: Ensure singleplatform repositories are cloned locally.
   git:
@@ -42,6 +45,7 @@
     bare: yes
   become: no
   with_items: "{{ sp_git_repos }}"
+  tags: ['git','post-provision']
 
 - name: Ensure singleplatform repositories are available locally.
   git:
@@ -52,29 +56,35 @@
     bare: no
   become: no
   with_items: "{{ sp_git_repos }}"
+  tags: ['git','post-provision']
 
 - name: Create pyenv virtualenv for ansible
   shell: pyenv virtualenv "{{ default_python_version }}" ansible
   ignore_errors: yes
+  tags: ['post-provision']
 
 - name: Lookup pyenv root
   shell: pyenv root
   register: pyenv_root
+  tags: ['post-provision']
 
 - name: Install requirements into ansible virtualenv
   shell: "{{ pyenv_root.stdout }}/versions/ansible/bin/pip install -r {{ sp_git_repos_local_directory }}/ansible/requirements.txt"
+  tags: ['post-provision']
 
 - name: Configure pyenv local for ansible
   copy:
     content: "ansible"
     dest: "{{ sp_git_repos_local_directory }}/ansible/.python-version"
     mode: 0644
+  tags: ['post-provision']
 
 - name: Ensure vagrant dir exists
   file:
     mode: 0755
     path: ~/.vagrant
     state: directory
+  tags: ['post-provision']
 
 - name: Link vagrant dir into ansible dir
   file:
@@ -82,4 +92,5 @@
     src: ~/.vagrant
     path: "{{ sp_git_repos_local_directory }}/ansible/.vagrant"
     state: link
+  tags: ['post-provision']
 
