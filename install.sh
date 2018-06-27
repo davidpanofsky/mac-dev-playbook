@@ -12,4 +12,4 @@ if [ ! -f ~/.config/mac-dev-playbook ]; then
   echo
 fi
 echo 'Invoking ansible to configure your Mac.'
-./env/bin/ansible-playbook main.yml -K -i inventory
+./env/bin/ansible-playbook main.yml -K -i inventory $*

@@ -37,7 +37,7 @@
   shell: pyenv global "{{ default_python_version }}"
   tags: ['post-provision']
 
-- name: Ensure singleplatform repositories are cloned locally.
+- name: Clone singleplatform shadow repos.
   git:
     repo: "sp:{{ item }}"
     dest: "{{ sp_git_repos_local_directory }}/.{{ item }}"
