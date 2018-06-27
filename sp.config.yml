@@ -26,6 +26,7 @@ homebrew_sp_packages:
   - autoconf
   - awscli
   - bash-completion
+  - ccache
   - coreutils
   - gettext
   - git

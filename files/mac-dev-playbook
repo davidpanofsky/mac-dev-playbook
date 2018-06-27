@@ -27,8 +27,80 @@ dotfiles_repo_local_destination: ~/.dotfiles
 dotfiles_files: []
 
 # Install user-defined packages (beyond core required packages for SinglePlatform)
-homebrew_additional_packages: []
-homebrew_cask_additional_apps: []
+homebrew_additional_packages:
+#  - ack
+#  - fd
+#  - fdupes
+#  - fontconfig
+#  - fzf
+#  - gnu-sed
+#  - httpie
+#  - jq
+#  - lftp
+#  - links
+#  - nmap
+#  - openssh
+#  - parallel
+#  - psutils
+#  - pv
+#  - ssh-copy-id
+#  - sslscan
+#  - tcptraceroute
+#  - watch
+#  - wget
+
+homebrew_cask_additional_apps:
+#  - adobe-acrobat-pro
+#  - adobe-acrobat-reader
+#  - air-connect
+#  - amethyst
+#  - android-file-transfer
+#  - android-platform-tools
+#  - chrome-devtools
+#  - chrome-remote-desktop-host
+#  - cyberduck
+#  - datagrip
+#  - docker
+#  - docker-toolbox
+#  - dropbox
+#  - firefox
+#  - gitup
+#  - google-chrome
+#  - google-drive-file-stream
+#  - jira-client
+#  - lastpass
+#  - macpass
+#  - mysql-shell
+#  - mysql-utilities
+#  - mysqlworkbench
+#  - noti
+#  - pycharm
+#  - redis-app
+#  - rsyncosx
+#  - spotify
+#  - sqlexplorer
+#  - sqlworkbenchj
+#  - sublime-text
+#  - time-out
+#  - vagrant-manager
+#  - virtualc64
+#  - wireshark
+#  - xaos
+
+# Install user-defined packages from apple store
+mas_email: ""
+mas_password: ""
+mas_additional_installed_apps:
+#  - { id: 406056744, name: "Evernote (6.13.1)" }
+#  - { id: 405399194, name: "Kindle (1.21.1)" }
+#  - { id: 585829637, name: "Todoist (7.0.9)" }
+#  - { id: 425955336, name: "Skitch (2.8)" }
+#  - { id: 1187772509, name: "stts (1.1.8)" }
+#  - { id: 865500966, name: "feedly (1.1)" }
+#  - { id: 948415170, name: "Pushbullet (4)" }
+#  - { id: 715768417, name: "Microsoft Remote Desktop (8.0.27325)" }
+#  - { id: 404010395, name: "TextWrangler (5.5.2)" }
+#  - { id: 568494494, name: "Pocket (1.6.2)" }
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
@@ -49,9 +121,4 @@ pip_additional_packages: []
   # - name: mkdocs
   #   state: present # present/absent/latest, default: present
   #   version: "0.16.3" # default: N/A
-
-# Install user-defined packages from apple store
-mas_email: ""
-mas_password: ""
-mas_additional_installed_apps: []
 
