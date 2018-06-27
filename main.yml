@@ -3,7 +3,7 @@
   connection: local
 
   vars_files:
-    - config.yml
+    - ~/.config/mac-dev-playbook
     - sp.config.yml
 
   pre_tasks:
