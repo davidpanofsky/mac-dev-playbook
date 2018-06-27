@@ -19,9 +19,6 @@ export PATH="/usr/local/bin:/usr/local/opt/mysql-client/bin:$PATH"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-alias more=less
-alias vi=vim
-
 # note: this must happen after liquidprompt
 [ -e "${HOME}/.iterm2_shell_integration.bash" ] && source "${HOME}/.iterm2_shell_integration.bash"
 

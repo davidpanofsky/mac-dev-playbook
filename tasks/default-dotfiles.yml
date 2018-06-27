@@ -7,3 +7,10 @@
     force: no
     mode: 0755
   tags: dotfiles
+
+- name: Include SP bash profile
+  lineinfile:
+    path: ~/.bash_profile
+    line: . ~/.bash_profile_sp
+    insertbefore: BOF
+    create: yes
