@@ -8,7 +8,8 @@
 
   pre_tasks:
     - name: Ensure xcode installed
-      shell: xcode-select --install
+      command: xcode-select --install
+      ignore_errors: yes
 
   roles:
     - role: geerlingguy.homebrew

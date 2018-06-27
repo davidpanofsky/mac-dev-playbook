@@ -55,6 +55,7 @@
 
 - name: Create pyenv virtualenv for ansible
   shell: pyenv virtualenv "{{ default_python_version }}" ansible
+  ignore_errors: yes
 
 - name: Lookup pyenv root
   shell: pyenv root
