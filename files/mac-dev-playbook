@@ -39,7 +39,6 @@ homebrew_additional_packages:
 #  - lftp
 #  - links
 #  - nmap
-#  - openssh
 #  - parallel
 #  - psutils
 #  - pv
