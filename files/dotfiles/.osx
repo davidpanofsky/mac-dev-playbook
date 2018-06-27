@@ -78,6 +78,11 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Set background to dark-grey color
 #sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Library/Desktop Pictures/Solid Colors/Solid Gray Dark.png'"
 
+# Enable local Time Machine snapshots
+if [[ "$RUN_AS_ROOT" = true ]]; then
+  sudo tmutil enablelocal
+fi
+
 ###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################
@@ -128,8 +133,12 @@ fi
 #defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate, and make it happen more quickly.
-defaults write NSGlobalDomain InitialKeyRepeat -int 20
+# The step values that correspond to the sliders on the GUI are as follow (lower equals faster):
+#   KeyRepeat: 120, 90, 60, 30, 12, 6, 2
+#   InitialKeyRepeat: 120, 94, 68, 35, 25, 15
+
 defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 25
 
 # Disable auto-correct
 #defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -230,7 +239,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 # defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Empty Trash securely by default
-# defaults write com.apple.finder EmptyTrashSecurely -bool true
+defaults write com.apple.finder EmptyTrashSecurely -bool true
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
@@ -252,7 +261,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 ###############################################################################
 
 # Set the icon size of Dock items
-defaults write com.apple.dock tilesize -int 30
+defaults write com.apple.dock tilesize -int 48
 
 # Enable spring loading for all Dock items
 # defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
