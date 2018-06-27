@@ -9,12 +9,15 @@ post_provision_tasks:
 sp_git_repos_local_directory: ~/envs
 sp_git_repos:
   - ansible
-  - spdj
-  - spbilling
+  - cdef
   - paywall
+  - publisher-feeds
+  - single-api
+  - sp-perftest
+  - spbilling
+  - spdj
   - spfb
   - spv2
-  - single-api
 
 mas_installed_sp_apps: []
 
