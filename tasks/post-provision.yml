@@ -69,3 +69,17 @@
     content: "ansible"
     dest: "{{ sp_git_repos_local_directory }}/ansible/.python-version"
     mode: 0644
+
+- name: Ensure vagrant dir exists
+  file:
+    mode: 0755
+    path: ~/.vagrant
+    state: directory
+
+- name: Link vagrant dir into ansible dir
+  file:
+    mode: 0755
+    src: ~/.vagrant
+    path: "{{ sp_git_repos_local_directory }}/ansible/.vagrant"
+    state: link
+
