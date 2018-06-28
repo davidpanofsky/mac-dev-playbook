@@ -3,6 +3,7 @@
 clear
 if [ ! -f ~/.config/mac-dev-playbook ]; then
   echo 'Copying default configuration into ~/.config/mac-dev-playbook. Any changes to this file will be used on future runs.'
+  mkdir -p ~/.config
   cp -v files/mac-dev-playbook ~/.config
 
   echo
