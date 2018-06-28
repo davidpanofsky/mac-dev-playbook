@@ -13,6 +13,7 @@
     value: "{{ item.value }}"
     scope: system
   tags: git
+  become: yes
   with_items:
     - { name: "core.excludesfile", value: "{{ ansible_user_dir }}/.gitignore_global" }
     - { name: "gpg.program", value: "/usr/local/bin/gpg" }

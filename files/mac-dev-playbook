@@ -27,7 +27,7 @@ dotfiles_repo_local_destination: ~/.dotfiles
 dotfiles_files: []
 
 # Install user-defined packages (beyond core required packages for SinglePlatform)
-homebrew_additional_packages:
+homebrew_additional_packages: []   # <-- remove this if you uncomment below
 #  - ack
 #  - fd
 #  - fdupes
@@ -48,7 +48,7 @@ homebrew_additional_packages:
 #  - watch
 #  - wget
 
-homebrew_cask_additional_apps:
+homebrew_cask_additional_apps: []   # <-- remove this if you uncomment below
 #  - adobe-acrobat-pro
 #  - adobe-acrobat-reader
 #  - air-connect
@@ -89,7 +89,7 @@ homebrew_cask_additional_apps:
 # Install user-defined packages from apple store
 mas_email: ""
 mas_password: ""
-mas_additional_installed_apps:
+mas_additional_installed_apps: []   # <-- remove this if you uncomment below
 #  - { id: 406056744, name: "Evernote (6.13.1)" }
 #  - { id: 405399194, name: "Kindle (1.21.1)" }
 #  - { id: 585829637, name: "Todoist (7.0.9)" }
