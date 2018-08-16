@@ -2,9 +2,9 @@
 ### Required Configuration ###
 #
 # Your Full Name
-user_name: ""
+full_name: ""
 # Your email address
-user_email: ""
+email_address: ""
 #
 ### End Required Configuration ###
 

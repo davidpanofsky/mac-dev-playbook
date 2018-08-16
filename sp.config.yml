@@ -1,4 +1,6 @@
 ---
+user_name: "{{ full_name }}"
+user_email: "{{ email_address }}"
 downloads: ~/.ansible-downloads/
 
 default_python_version: 2.7.15
