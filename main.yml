@@ -7,9 +7,6 @@
     - sp.config.yml
 
   pre_tasks:
-    - name: Ensure xcode installed
-      command: xcode-select --install
-      ignore_errors: yes
     - name: Ensure /usr/local owned by current user
       file:
         path: "/usr/local/{{ item }}"

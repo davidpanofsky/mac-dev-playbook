@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 clear
+
+echo 'Ensuring xcode is installed.'
+xcode-select --install 2> /dev/null
+
 if [ ! -f ~/.config/mac-dev-playbook ]; then
   echo 'Copying default configuration into ~/.config/mac-dev-playbook. Any changes to this file will be used on future runs.'
   mkdir -p ~/.config
