@@ -2,9 +2,68 @@
 
 [![Build Status](https://travis-ci.org/geerlingguy/mac-dev-playbook.svg?branch=master)](https://travis-ci.org/geerlingguy/mac-dev-playbook)
 
-This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have some manual installation steps, but at least it's all documented here.
+This utility installs and configures the minimal software on your Mac needed for development at SinglePlatform. The following tasks are performed:
+  - Installs minimal bash profile (preserves any bash profile customizations you may have)
+  - Installs useful git config with some handy aliases (see files/gitconfig)
+  - Optionally installs your dotfiles from a github repo
+  - Installs HomeBrew with small set of packages useful for SP development:
+    - awscli
+    - git
+    - pyenv
+    - pyenv-virtualenv
+    - sqlite
+    - tmux
+    - aws-vault
+    - github
+    - hipchat
+    - iterm2
+    - mysql-client
+    - mysql-connector-python
+    - postman
+    - utc-menu-clock
+    - vagrant
+    - virtualbox
+  - Installs python 2.7 using pyenv
+  - Clones SP repos into (~/envs):
+    - ansible
+    - cdef
+    - paywall
+    - publisher-feeds
+    - single-api
+    - sp-perftest
+    - spbilling
+    - spdj
+    - spfb
+    - spv2
+  - Sets up ansible, virtualbox, and vagrant so that starting a dev environment should be as simple as:
+    `cd ~/envs/ansible`
+    `vagrant up spdj`
+   - Optionally installs additional tools such as:
+     - adobe-acrobat-reader
+     - cyberduck
+     - datagrip
+     - docker
+     - firefox
+     - google-chrome
+     - google-drive-file-stream
+     - httpie
+     - jira-client
+     - jq
+     - lastpass
+     - mysql-shell
+     - mysql-utilities
+     - mysqlworkbench
+     - nmap
+     - pycharm
+     - sqlexplorer
+     - sqlworkbenchj
+     - sublime-text
+     - wget
+     - wireshark
 
-This is a work in progress, and is mostly a means for me to document my current Mac's setup. I'll be evolving this set of playbooks over time.
+It can also be used to install a battery of optional software which many developers find useful.
+
+This is a work in progress. I'll be evolving this set of playbooks over time.
 
 *See also*:
 
@@ -22,8 +81,11 @@ This is a work in progress, and is mostly a means for me to document my current 
   3. Run `$ ./install.sh` from the cloned repo. This will open an editor with the default config loaded.
      - At a minimum, you need to fill out "full_name" & "email_address".
   4. Once you save this file, the ansible playbook will be invoked. Enter your network account password when prompted for Sudo.
-
-> Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
+  
+> Notes:
+  - The install.sh command can be re-run and will use your saved settings. If you wish to change your configuration after the first run, you'll need to edit:
+    `~/.config/mac-dev-playbook`
+  - If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
 ### Running a specific set of tagged tasks
 
