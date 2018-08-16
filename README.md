@@ -16,11 +16,11 @@ This is a work in progress, and is mostly a means for me to document my current 
 ## Installation
 
   1. You need access to to the Singleplatform GitHub Organization via SSH Key before this utility will function.
-     If you're upgrading to a new laptop, make sure you copy all the files from your old ~/.ssh laptop before running this. I recommend using AirDrop for this task.
-     If you are installing this for the first time, you'll need to upload your key here https://github.com/settings/keys.
+     - If you're upgrading to a new laptop, make sure you copy all the files from your old ~/.ssh laptop before running this. I recommend using AirDrop for this task.
+     - If you are installing this for the first time, you'll need to upload your key here https://github.com/settings/keys.
   2. Clone this repository to your local drive. I recommend putting it in ~/envs.
   3. Run `$ ./install.sh` from the cloned repo. This will open an editor with the default config loaded.
-     At a minimum, you need to fill out "full_name" & "email_address".
+     - At a minimum, you need to fill out "full_name" & "email_address".
   4. Once you save this file, the ansible playbook will be invoked. Enter your network account password when prompted for Sudo.
 
 > Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
