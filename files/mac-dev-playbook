@@ -13,18 +13,16 @@ email_address: ""
 configure_dotfiles: yes
 # copy sp gitconfig aliases and configuration?
 configure_git: yes
-configure_sudoers: no
-configure_terminal: no
+configure_sudoers: yes
+configure_terminal: yes
 # tweak osx settings?
 configure_osx: no
 
-downloads: ~/.ansible-downloads/
-
-# User-defined dotfile repo
+# User-defined dotfile repo if you already have your dotfiles in github
 dotfiles_repo: ""
+dotfiles_files: []
 dotfiles_repo_accept_hostkey: yes
 dotfiles_repo_local_destination: ~/.dotfiles
-dotfiles_files: []
 
 # Install user-defined packages (beyond core required packages for SinglePlatform)
 homebrew_additional_packages: []   # <-- remove this if you uncomment below
