@@ -15,11 +15,13 @@ This is a work in progress, and is mostly a means for me to document my current 
 
 ## Installation
 
-  1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
-  2. [Install Ansible](http://docs.ansible.com/intro_installation.html).
-  3. Clone this repository to your local drive.
-  4. Run `$ ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
-  5. Run `ansible-playbook main.yml -i inventory -K` inside this directory. Enter your account password when prompted.
+  1. You need access to to the Singleplatform GitHub Organization via SSH Key before this utility will function.
+     If you're upgrading to a new laptop, make sure you copy all the files from your old ~/.ssh laptop before running this. I recommend using AirDrop for this task.
+     If you are installing this for the first time, you'll need to upload your key here https://github.com/settings/keys.
+  2. Clone this repository to your local drive. I recommend putting it in ~/envs.
+  3. Run `$ ./install.sh` from the cloned repo. This will open an editor with the default config loaded.
+     At a minimum, you need to fill out "full_name" & "email_address".
+  4. Once you save this file, the ansible playbook will be invoked. Enter your network account password when prompted for Sudo.
 
 > Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
@@ -27,9 +29,9 @@ This is a work in progress, and is mostly a means for me to document my current 
 
 You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `homebrew`, `mas`, `extra-packages` and `osx`.
 
-    ansible-playbook main.yml -i inventory -K --tags "dotfiles,homebrew"
+    ./install.sh --tags "dotfiles,homebrew"
 
-## Overriding Defaults
+## Overriding Defaults (rest of this document doesn't reflect SP customizaion yet)
 
 Not everyone's development environment and preferred software configuration is the same.
 
