@@ -80,3 +80,6 @@
 
 [url "ssh://git@github.com/singleplatform/"]
 	insteadof = sp:
+
+[url "ssh://git@github.com/singleplatform-eng/"]
+	insteadof = spe:
