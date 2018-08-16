@@ -6,23 +6,9 @@ This utility installs and configures the minimal software on your Mac needed for
   - Installs minimal bash profile (preserves any bash profile customizations you may have)
   - Installs useful git config with some handy aliases (see files/gitconfig)
   - Optionally installs your dotfiles from a github repo
-  - Installs HomeBrew with small set of packages useful for SP development:
-    - awscli
-    - git
-    - pyenv
-    - pyenv-virtualenv
-    - sqlite
-    - tmux
-    - aws-vault
-    - github
-    - hipchat
-    - iterm2
-    - mysql-client
-    - mysql-connector-python
-    - postman
-    - utc-menu-clock
-    - vagrant
-    - virtualbox
+  - Optionally tweaks many aspects of macOS for better performance and ease of use.
+  - Optionally installs apps form the Apple Store
+  - Installs [Homebrew](http://brew.sh/) with minimal set of packages useful for SP development
   - Installs python 2.7 using pyenv
   - Clones SP repos into (~/envs):
     - ansible
@@ -38,28 +24,6 @@ This utility installs and configures the minimal software on your Mac needed for
   - Sets up ansible, virtualbox, and vagrant so that starting a dev environment should be as simple as:
     `cd ~/envs/ansible`
     `vagrant up spdj`
-   - Optionally installs additional tools such as:
-     - adobe-acrobat-reader
-     - cyberduck
-     - datagrip
-     - docker
-     - firefox
-     - google-chrome
-     - google-drive-file-stream
-     - httpie
-     - jira-client
-     - jq
-     - lastpass
-     - mysql-shell
-     - mysql-utilities
-     - mysqlworkbench
-     - nmap
-     - pycharm
-     - sqlexplorer
-     - sqlworkbenchj
-     - sublime-text
-     - wget
-     - wireshark
 
 It can also be used to install a battery of optional software which many developers find useful.
 
@@ -93,93 +57,150 @@ You can filter which part of the provisioning process to run by specifying a set
 
     ./install.sh --tags "dotfiles,homebrew"
 
-## Overriding Defaults (rest of this document doesn't reflect SP customizaion yet)
+## Included Applications / Configuration (Default)
+
+Applications (installed with Homebrew Cask):
+  - aws-vault
+  - font-dejavusansmono-nerd-font
+  - font-droidsansmono-nerd-font
+  - font-hack-nerd-font
+  - github
+  - hipchat
+  - iterm2
+  - mysql-client
+  - mysql-connector-python
+  - postman
+  - utc-menu-clock
+  - [Vagrant](https://www.vagrantup.com/)
+  - virtualbox
+
+Packages (installed with Homebrew):
+  - autoconf
+  - awscli
+  - bash-completion
+  - ccache
+  - coreutils
+  - gettext
+  - git
+  - git-secrets
+  - gpg
+  - openssl
+  - pwgen
+  - pyenv
+  - pyenv-ccache
+  - pyenv-pip-migrate
+  - pyenv-virtualenv
+  - readline
+  - sqlite
+  - tmux
+  - tmux-cssh
+  - vagrant-completion
+
+## Overriding Defaults
 
 Not everyone's development environment and preferred software configuration is the same.
 
-You can override any of the defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed packages and apps with something like:
+You can override any of the defaults configured in `~/.config/mac-dev-playbook`. For example, you can install additional packages and apps with something like:
 
-    homebrew_installed_packages:
+    homebrew_additional_packages:
       - cowsay
-      - git
       - go
     
-    mas_installed_apps:
+    homebrew_cask_additional_apps:
+      - datagrip
+      - pycharm
+      
+    mas_additional_installed_apps:
       - { id: 443987910, name: "1Password" }
       - { id: 498486288, name: "Quick Resizer" }
       - { id: 557168941, name: "Tweetbot" }
       - { id: 497799835, name: "Xcode" }
     
-    composer_packages:
+    composer_additional_packages:
       - name: hirak/prestissimo
       - name: drush/drush
         version: '^8.1'
     
-    gem_packages:
+    gem_additional_packages:
       - name: bundler
         state: latest
     
-    npm_packages:
+    npm_additional_packages:
       - name: webpack
     
-    pip_packages:
+    pip_additional_packages:
       - name: mkdocs
 
-Any variable can be overridden in `config.yml`; see the supporting roles' documentation for a complete list of available variables.
+If you have a repository of dotfile customizations on GitHub, you can automatically pull those files down by setting something like this:
+    
+    dotfiles_repo: https://github.com/davidpanofsky/dotfiles.git
+    dotfiles_files:
+      - .bash_profile
+      - .gitconfig
+      - .gitignore
+      - .SpaceVim.d/init.vim
+      - .osx
 
-## Included Applications / Configuration (Default)
+## Optional Applications
 
 Applications (installed with Homebrew Cask):
-
-  - [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
+  - adobe-acrobat-pro
+  - adobe-acrobat-reader
+  - air-connect
+  - amethyst
+  - android-file-transfer
+  - android-platform-tools
+  - chrome-devtools
+  - chrome-remote-desktop-host
+  - cyberduck
+  - datagrip
   - [Docker](https://www.docker.com/)
+  - docker-toolbox
   - [Dropbox](https://www.dropbox.com/)
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  - gitup
   - [Google Chrome](https://www.google.com/chrome/)
-  - [Handbrake](https://handbrake.fr/)
-  - [Homebrew](http://brew.sh/)
-  - [LICEcap](http://www.cockos.com/licecap/)
-  - [LimeChat](http://limechat.net/mac/)
-  - [MacVim](http://macvim-dev.github.io/macvim/)
-  - [nvALT](http://brettterpstra.com/projects/nvalt/)
-  - [Sequel Pro](https://www.sequelpro.com/) (MySQL client)
-  - [Skitch](https://evernote.com/skitch/)
-  - [Slack](https://slack.com/)
+  - google-drive-file-stream
+  - jira-client
+  - lastpass
+  - macpass
+  - mysql-shell
+  - mysql-utilities
+  - mysqlworkbench
+  - noti
+  - pycharm
+  - redis-app
+  - rsyncosx
+  - spotify
+  - sqlexplorer
+  - sqlworkbenchj
   - [Sublime Text](https://www.sublimetext.com/)
-  - [Transmit](https://panic.com/transmit/) (S/FTP client)
-  - [Vagrant](https://www.vagrantup.com/)
+  - time-out
+  - vagrant-manager
+  - virtualc64
+  - wireshark
+  - xaos
 
 Packages (installed with Homebrew):
-
-  - autoconf
-  - bash-completion
-  - doxygen
-  - gettext
-  - gifsicle
-  - git
-  - go
-  - gpg
-  - hub
+  - ack
+  - fd
+  - fdupes
+  - fontconfig
+  - fzf
+  - gnu-sed
   - httpie
-  - iperf
-  - libevent
-  - sqlite
-  - mcrypt
+  - jq
+  - lftp
+  - links
   - nmap
-  - node
-  - nvm
-  - php
-  - ssh-copy-id
-  - cowsay
-  - readline
-  - openssl
+  - parallel
+  - psutils
   - pv
+  - ssh-copy-id
+  - sslscan
+  - tcptraceroute
+  - watch
   - wget
-  - wrk
-
-My [dotfiles](https://github.com/geerlingguy/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
-
-Finally, there are a few other preferences and settings added on for various apps and services.
 
 ## Future additions
 
