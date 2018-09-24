@@ -27,6 +27,7 @@ dotfiles_repo_local_destination: ~/.dotfiles
 # Install user-defined packages (beyond core required packages for SinglePlatform)
 homebrew_additional_packages: []   # <-- remove this if you uncomment below
 #  - ack
+#  - ccache
 #  - fd
 #  - fdupes
 #  - fontconfig
@@ -40,6 +41,7 @@ homebrew_additional_packages: []   # <-- remove this if you uncomment below
 #  - parallel
 #  - psutils
 #  - pv
+#  - pyenv-ccache
 #  - ssh-copy-id
 #  - sslscan
 #  - tcptraceroute

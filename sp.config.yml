@@ -28,7 +28,6 @@ homebrew_sp_packages:
   - autoconf
   - awscli
   - bash-completion
-  - ccache
   - coreutils
   - gettext
   - git
@@ -37,7 +36,6 @@ homebrew_sp_packages:
   - openssl
   - pwgen
   - pyenv
-  - pyenv-ccache
   - pyenv-pip-migrate
   - pyenv-virtualenv
   - readline
