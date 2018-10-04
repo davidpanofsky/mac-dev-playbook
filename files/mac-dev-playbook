@@ -33,6 +33,7 @@ homebrew_additional_packages: []   # <-- remove this if you uncomment below
 #  - fontconfig
 #  - fzf
 #  - gnu-sed
+#  - graphviz
 #  - httpie
 #  - jq
 #  - lftp
