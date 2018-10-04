@@ -7,7 +7,7 @@
     - sp.config.yml
 
   pre_tasks:
-    - name: check sudo password - if this fails, you supplied the wrong sudo password: Re-run install.sh
+    - name: 'check sudo password - if this fails, you supplied the wrong sudo password: Re-run install.sh'
       become: true
       become_user: nobody
       command: /usr/bin/true
