@@ -33,6 +33,7 @@ homebrew_sp_packages:
   - git
   - git-secrets
   - gpg
+  - mysql-client
   - openssl
   - pwgen
   - pyenv
