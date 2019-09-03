@@ -42,7 +42,6 @@ homebrew_sp_packages:
   - readline
   - sqlite
   - tmux
-  - tmux-cssh
   - vagrant-completion
 
 homebrew_taps:

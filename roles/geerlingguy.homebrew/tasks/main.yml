@@ -82,14 +82,30 @@
     - Caskroom
     - bin
     - etc
+    - etc/bash_completion.d
     - include
     - lib
+    - lib/pkgconfig
     - opt
     - sbin
     - share
+    - share/doc
+    - share/man
+    - share/man/man1
     - share/zsh
     - share/zsh/site-functions
     - var
+    - var/homebrew
+    - var/homebrew/locks
+
+- name: Ensure itadmin-installed homebrew locks update file is writeable.
+  file:
+    path: "/usr/local/var/homebrew/locks/update"
+    state: file
+    owner: "{{ ansible_user_id }}"
+    group: admin
+  when: "ansible_distribution_version.startswith('10.13')"
+  become: yes
 
 - name: Force update brew after installation.
   command: "{{ homebrew_brew_bin_path }}/brew update --force"
