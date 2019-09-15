@@ -67,6 +67,7 @@
     bare: yes
   become: no
   with_items: "{{ pub_git_repos }}"
+  tags: ['git','post-provision']
 
 - name: Ensure other repos are available locally
   git:
@@ -78,12 +79,14 @@
     bare: no
   become: no
   with_items: "{{ pub_git_repos }}"
+  tags: ['git','post-provision']
 
 - name: Copy tmux-cssh binary
   command: /bin/cp {{ pub_git_repos_local_directory }}/tmux-cssh/tmux-cssh /usr/bin
   become: yes
   args:
     creates: /usr/bin/tmux-cssh
+  tags: ['git','post-provision']
 
 - name: Create pyenv virtualenv for ansible
   shell: pyenv virtualenv "{{ default_python_version }}" ansible
