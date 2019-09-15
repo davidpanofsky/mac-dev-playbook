@@ -58,6 +58,33 @@
   with_items: "{{ sp_git_repos }}"
   tags: ['git','post-provision']
 
+- name: Clone other repos
+  git:
+    repo: "gh:{{ item }}"
+    dest: "{{ pub_git_repos_local_directory }}/.{{ item }}"
+    version: master
+    recursive: yes
+    bare: yes
+  become: no
+  with_items: "{{ pub_git_repos }}"
+
+- name: Ensure other repos are available locally
+  git:
+    repo: "gh:{{ item }}"
+    dest: "{{ pub_git_repos_local_directory }}/{{ item }}"
+    version: master
+    recursive: yes
+    reference: "{{ pub_git_repos_local_directory }}/.{{ item }}"
+    bare: no
+  become: no
+  with_items: "{{ pub_git_repos }}"
+
+- name: Copy tmux-cssh binary
+  command: /bin/cp {{ pub_git_repos_local_directory }}/tmux-cssh/tmux-cssh /usr/bin
+  become: yes
+    args:
+       creates: /usr/bin/tmux-cssh
+
 - name: Create pyenv virtualenv for ansible
   shell: pyenv virtualenv "{{ default_python_version }}" ansible
   ignore_errors: yes
