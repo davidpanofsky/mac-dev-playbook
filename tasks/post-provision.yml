@@ -82,10 +82,10 @@
   tags: ['git','post-provision']
 
 - name: Copy tmux-cssh binary
-  command: /bin/cp {{ pub_git_repos_local_directory }}/tmux-cssh/tmux-cssh /usr/bin
-  become: yes
+  command: /bin/cp {{ pub_git_repos_local_directory }}/tmux-cssh/tmux-cssh /usr/local/bin
+  become: no
   args:
-    creates: /usr/bin/tmux-cssh
+    creates: /usr/local/bin/tmux-cssh
   tags: ['post-provision']
 
 - name: Create pyenv virtualenv for ansible
