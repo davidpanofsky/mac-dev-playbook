@@ -82,8 +82,8 @@
 - name: Copy tmux-cssh binary
   command: /bin/cp {{ pub_git_repos_local_directory }}/tmux-cssh/tmux-cssh /usr/bin
   become: yes
-    args:
-      creates: /usr/bin/tmux-cssh
+  args:
+    creates: /usr/bin/tmux-cssh
 
 - name: Create pyenv virtualenv for ansible
   shell: pyenv virtualenv "{{ default_python_version }}" ansible
