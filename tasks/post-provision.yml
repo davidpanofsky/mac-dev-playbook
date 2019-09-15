@@ -82,7 +82,7 @@
   tags: ['git','post-provision']
 
 - name: Copy tmux-cssh binary
-  command: /bin/cp {{ pub_git_repos_local_directory }}/tmux-cssh/tmux-cssh /usr/local/bin
+  command: /bin/cp {{ pub_git_repos_local_directory }}/peikk0/tmux-cssh/tmux-cssh /usr/local/bin
   become: no
   args:
     creates: /usr/local/bin/tmux-cssh
