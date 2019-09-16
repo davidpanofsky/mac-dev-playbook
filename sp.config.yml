@@ -9,6 +9,7 @@ post_provision_tasks:
   - tasks/post-provision.yml
 
 sp_git_repos_local_directory: ~/envs
+
 sp_git_repos:
   - ansible
   - cdef
@@ -20,6 +21,11 @@ sp_git_repos:
   - spdj
   - spfb
   - spv2
+
+pub_git_repos:
+  - peikk0/tmux-cssh
+
+pub_git_repos_local_directory: ~/install
 
 mas_installed_sp_apps: []
 
