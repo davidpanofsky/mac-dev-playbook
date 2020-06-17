@@ -3,7 +3,7 @@ user_name: "{{ full_name }}"
 user_email: "{{ email_address }}"
 downloads: ~/.ansible-downloads/
 
-default_python_version: 2.7.15
+default_python_version: 3.6.10
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks:
   - tasks/post-provision.yml
@@ -16,11 +16,10 @@ sp_git_repos:
   - paywall
   - publisher-feeds
   - single-api
-  - sp-perftest
   - spbilling
   - spdj
   - spfb
-  - spv2
+  - spregression
 
 pub_git_repos:
   - peikk0/tmux-cssh
