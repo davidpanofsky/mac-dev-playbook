@@ -12,11 +12,9 @@ sp_git_repos_local_directory: ~/envs
 
 sp_git_repos:
   - ansible
-  - cdef
   - paywall
   - publisher-feeds
   - single-api
-  - spbilling
   - spdj
   - spfb
   - spregression
