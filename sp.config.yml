@@ -3,7 +3,7 @@ user_name: "{{ full_name }}"
 user_email: "{{ email_address }}"
 downloads: ~/.ansible-downloads/
 
-default_python_version: 3.6.10
+default_python_version: 3.6.8
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks:
   - tasks/post-provision.yml
