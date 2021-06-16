@@ -248,3 +248,17 @@ Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches
 ## Author
 
 [Jeff Geerling](https://www.jeffgeerling.com/), 2014 (originally inspired by [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks)).
+
+## Troubleshooting
+  - If you are running the installation script on macOS 11 (BigSur) you will most likely encounter an error while installing python 3.6.8 in pyenv.
+    Error will look similar to the following:
+    ```
+    ./Modules/posixmodule.c:9221:15: error: implicit declaration of function 'sendfile' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+            ret = sendfile(in, out, offset, &sbytes, &sf, flags);
+    ```
+
+    If his is the case, please run the following command:
+    ```
+    CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" pyenv install --patch 3.6.8 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
+    ```
+    Then re-run `$ ./install.sh`
